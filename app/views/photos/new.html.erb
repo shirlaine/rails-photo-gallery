@@ -12,4 +12,14 @@
 	<%= f.text_field :file_location %>
 
 	<%= f.submit "Create" %>
+
+<% if @photo.errors.present?%>
+
+ <ul>
+ 	<% @photo.errors.each do |error, message| %>
+ 	<li><%= "#{error.capitalize} #{message}" %></li>
+ 	<% end %>
+ </ul>
+
+<% end %>
 <% end %> 
