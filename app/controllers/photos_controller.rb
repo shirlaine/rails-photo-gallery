@@ -1,4 +1,5 @@
 class PhotosController < ApplicationController
+   before_action :set_photo, :only => [:show, :edit, :update, :destroy]
 
 	def index 
 		@photos = Photo.all
@@ -19,15 +20,15 @@ class PhotosController < ApplicationController
 	end
 
 	def show
-		@photo = Photo.find(params[:id])
+		@photo = set_photo
 	end	
 
 	def edit
-		@photo = Photo.find(params[:id])
+		@photo = set_photo
 	end	
 
 	def update
-		@photo = Photo.find(params[:id])
+		@photo = set_photo
 		
 		if @photo.update_attributes(photo_params)
 
@@ -41,7 +42,7 @@ class PhotosController < ApplicationController
 	end 
 
 	def destroy
-		@photo = Photo.find(params[:id])
+		@photo = set_photo
 		@photo.destroy 
 
 		redirect_to photos_url
@@ -49,9 +50,14 @@ class PhotosController < ApplicationController
 
 
 private
+	
+	def set_photo
+		@photo = Photo.find(params[:id])
+	end 
 
 	def photo_params
 		params.require(:photo).permit(:title, :date, :description, :file_location)
 	end
 
+	
 end
