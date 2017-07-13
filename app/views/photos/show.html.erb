@@ -1,6 +1,8 @@
 <%= @photo.title %>
 <%= @photo.date %>
-<%= image_tag "/#{ @photo.file_location}" %>
+<br>
+<%= image_tag @photo.file_location.url %>
+<br>
 <%= @photo.description %>
 
 <p>
