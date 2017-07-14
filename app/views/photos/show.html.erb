@@ -1,7 +1,7 @@
 <%= @photo.title %>
 <%= @photo.date %>
 <br>
-<%= image_tag @photo.file_location.url %>
+<%= image_tag @photo.file_location.url, :style => "height: 40%; width: 20%"; %>
 <br>
 <%= @photo.description %>
 
